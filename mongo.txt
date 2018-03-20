@@ -1,0 +1,22 @@
+//Tasks
+//1. To create a collection on the DB you need to input the following
+db.createCollection('orders')
+
+//2. To insert at least 3 documents that represent an order
+db.orders.insert({orderDate: new Date('2017-02-03'), orderTotal: 99.96, lineItems: [{unitPrice: 24.99, quantity: 4, productName: "Desk Chair"}]})
+db.orders.insert({orderDate: new Date('2017-04-04'), orderTotal: 24.99, lineItems: [{unitPrice: 24.99, quantity: 1, productName: "Desk"}]})
+db.orders.insert({orderDate: new Date('2017-01-02'), orderTotal: 24.99, lineItems: [{unitPrice: 24.99, quantity: 1, productName: "Mouse Pad"}]})
+
+
+//3. To find all orders inside of the DB and make it look nicer, you need to use the following:
+db.orders.find().pretty()
+
+//4. To find all orders with an order date after 1/31/2017
+db.orders.find({orderDate: {$gt: ISODate("2017-01-31T00:00:00Z")}});
+
+//5. To change the orderTotal from the order on 2017-02-03 to 63.00 will be:
+db.orders.update({orderDate: {$eq: ISODate("2017-02-03T00:00:00Z")}}, {$set: {orderTotal: "63.00"}});
+
+
+
+
